@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Menu, Search } from "lucide-react";
 import { useState } from "react";
@@ -19,7 +20,7 @@ const Navbar = () => {
           >
             <Menu className="h-6 w-6" />
           </Button>
-          <a href="/" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <img 
               src="/lovable-uploads/44d718c2-c665-4c4a-b504-d07049172178.png" 
               alt="GrubZap Logo" 
@@ -28,15 +29,15 @@ const Navbar = () => {
             <span className="font-display font-bold text-2xl md:text-3xl text-grubzap-dark">
               Grub<span className="text-grubzap-orange">Zap</span>
             </span>
-          </a>
+          </Link>
         </div>
         
         <div className="hidden md:flex items-center gap-6">
-          <a href="/" className="font-medium hover:text-grubzap-orange transition-colors">Home</a>
-          <a href="#" className="font-medium hover:text-grubzap-orange transition-colors">Menu</a>
-          <a href="#" className="font-medium hover:text-grubzap-orange transition-colors">Restaurants</a>
-          <a href="#" className="font-medium hover:text-grubzap-orange transition-colors">About</a>
-          <a href="#" className="font-medium hover:text-grubzap-orange transition-colors">Contact</a>
+          <Link to="/" className="font-medium hover:text-grubzap-orange transition-colors">Home</Link>
+          <Link to="/menu" className="font-medium hover:text-grubzap-orange transition-colors">Menu</Link>
+          <Link to="/restaurants" className="font-medium hover:text-grubzap-orange transition-colors">Restaurants</Link>
+          <Link to="/about" className="font-medium hover:text-grubzap-orange transition-colors">About</Link>
+          <Link to="/contact" className="font-medium hover:text-grubzap-orange transition-colors">Contact</Link>
         </div>
         
         <div className="flex items-center gap-3">
@@ -58,11 +59,11 @@ const Navbar = () => {
         <div className="md:hidden bg-white border-t py-4">
           <div className="container mx-auto px-4">
             <div className="flex flex-col space-y-3">
-              <a href="/" className="font-medium py-2 hover:text-grubzap-orange transition-colors">Home</a>
-              <a href="#" className="font-medium py-2 hover:text-grubzap-orange transition-colors">Menu</a>
-              <a href="#" className="font-medium py-2 hover:text-grubzap-orange transition-colors">Restaurants</a>
-              <a href="#" className="font-medium py-2 hover:text-grubzap-orange transition-colors">About</a>
-              <a href="#" className="font-medium py-2 hover:text-grubzap-orange transition-colors">Contact</a>
+              <Link to="/" className="font-medium py-2 hover:text-grubzap-orange transition-colors">Home</Link>
+              <Link to="/menu" className="font-medium py-2 hover:text-grubzap-orange transition-colors">Menu</Link>
+              <Link to="/restaurants" className="font-medium py-2 hover:text-grubzap-orange transition-colors">Restaurants</Link>
+              <Link to="/about" className="font-medium py-2 hover:text-grubzap-orange transition-colors">About</Link>
+              <Link to="/contact" className="font-medium py-2 hover:text-grubzap-orange transition-colors">Contact</Link>
               <Button className="bg-grubzap-orange hover:bg-grubzap-darkOrange w-full mt-2">
                 Sign In
               </Button>
