@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				grubzap: {
+					red: '#E63946',
+					orange: '#F97316',
+					darkOrange: '#C2410C',
+					yellow: '#FCBF49',
+					dark: '#1D3557',
+					light: '#F1FAEE',
 				}
 			},
 			borderRadius: {
@@ -84,11 +93,25 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-5px)' }
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 3s ease-in-out infinite'
+			},
+			fontFamily: {
+				sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				display: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+			},
+			backgroundImage: {
+				'hero-pattern': 'linear-gradient(to right, rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.6)), url("/lovable-uploads/44d718c2-c665-4c4a-b504-d07049172178.png")',
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'orange-gradient': 'linear-gradient(90deg, #F97316 0%, #FCBF49 100%)',
 			}
 		}
 	},
