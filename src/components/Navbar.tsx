@@ -48,9 +48,11 @@ const Navbar = () => {
             <ShoppingCart className="h-5 w-5 text-grubzap-dark" />
             <span className="absolute -top-1 -right-1 bg-grubzap-red text-white rounded-full w-5 h-5 text-xs flex items-center justify-center">2</span>
           </Button>
-          <Button className="hidden md:flex bg-grubzap-orange hover:bg-grubzap-darkOrange">
-            Sign In
-          </Button>
+          <Link to="/login">
+            <Button className="hidden md:flex bg-grubzap-orange hover:bg-grubzap-darkOrange">
+              Sign In
+            </Button>
+          </Link>
         </div>
       </div>
       
@@ -64,9 +66,11 @@ const Navbar = () => {
               <Link to="/restaurants" className="font-medium py-2 hover:text-grubzap-orange transition-colors">Restaurants</Link>
               <Link to="/about" className="font-medium py-2 hover:text-grubzap-orange transition-colors">About</Link>
               <Link to="/contact" className="font-medium py-2 hover:text-grubzap-orange transition-colors">Contact</Link>
-              <Button className="bg-grubzap-orange hover:bg-grubzap-darkOrange w-full mt-2">
-                Sign In
-              </Button>
+              <Link to="/login" className="w-full">
+                <Button className="bg-grubzap-orange hover:bg-grubzap-darkOrange w-full mt-2">
+                  Sign In
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
