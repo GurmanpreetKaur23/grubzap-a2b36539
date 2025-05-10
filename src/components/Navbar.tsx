@@ -67,6 +67,7 @@ const Navbar = () => {
           <Link to="/" className="font-medium hover:text-grubzap-orange transition-colors">Home</Link>
           <Link to="/menu" className="font-medium hover:text-grubzap-orange transition-colors">Menu</Link>
           <Link to="/restaurants" className="font-medium hover:text-grubzap-orange transition-colors">Restaurants</Link>
+          <Link to="/product" className="font-medium hover:text-grubzap-orange transition-colors">Discover</Link>
           <Link to="/about" className="font-medium hover:text-grubzap-orange transition-colors">About</Link>
           <Link to="/contact" className="font-medium hover:text-grubzap-orange transition-colors">Contact</Link>
         </div>
@@ -104,6 +105,7 @@ const Navbar = () => {
               <Link to="/" className="font-medium py-2 hover:text-grubzap-orange transition-colors">Home</Link>
               <Link to="/menu" className="font-medium py-2 hover:text-grubzap-orange transition-colors">Menu</Link>
               <Link to="/restaurants" className="font-medium py-2 hover:text-grubzap-orange transition-colors">Restaurants</Link>
+              <Link to="/product" className="font-medium py-2 hover:text-grubzap-orange transition-colors">Discover</Link>
               <Link to="/about" className="font-medium py-2 hover:text-grubzap-orange transition-colors">About</Link>
               <Link to="/contact" className="font-medium py-2 hover:text-grubzap-orange transition-colors">Contact</Link>
               <Link to="/cart" className="font-medium py-2 hover:text-grubzap-orange transition-colors">Cart</Link>
