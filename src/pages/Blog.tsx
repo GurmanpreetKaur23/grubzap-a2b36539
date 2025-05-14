@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -30,126 +29,117 @@ type BlogPost = {
   featured: boolean;
 };
 
+// Mock blog posts data
+const mockBlogPosts: BlogPost[] = [
+  {
+    id: 1,
+    title: "10 Best Food Delivery Services in 2025",
+    excerpt: "Discover the top food delivery services that are revolutionizing the way we order food.",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38",
+    author: {
+      name: "Michael Johnson",
+      avatar: "https://randomuser.me/api/portraits/men/32.jpg"
+    },
+    date: "May 14, 2025",
+    readTime: "5 min read",
+    category: "Food Delivery",
+    tags: ["food delivery", "restaurants", "takeout"],
+    commentCount: 18,
+    featured: true
+  },
+  {
+    id: 2,
+    title: "How to Save Money on Food Delivery",
+    excerpt: "Learn the best tips and tricks to save money while still enjoying the convenience of food delivery.",
+    content: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    image: "https://images.unsplash.com/photo-1532634993-15f421e42ec0",
+    author: {
+      name: "Sarah Wilson",
+      avatar: "https://randomuser.me/api/portraits/women/44.jpg"
+    },
+    date: "May 10, 2025",
+    readTime: "7 min read",
+    category: "Tips & Tricks",
+    tags: ["saving money", "food delivery", "tips"],
+    commentCount: 24,
+    featured: false
+  },
+  {
+    id: 3,
+    title: "The Rise of Ghost Kitchens in 2025",
+    excerpt: "Exploring how ghost kitchens are transforming the restaurant industry landscape.",
+    content: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    image: "https://images.unsplash.com/photo-1540914124281-342587941389",
+    author: {
+      name: "Alex Chen",
+      avatar: "https://randomuser.me/api/portraits/men/22.jpg"
+    },
+    date: "May 5, 2025",
+    readTime: "8 min read",
+    category: "Industry Trends",
+    tags: ["ghost kitchens", "restaurants", "food industry"],
+    commentCount: 32,
+    featured: true
+  },
+  {
+    id: 4,
+    title: "Healthy Meal Delivery Services Review",
+    excerpt: "Comprehensive review of the top healthy meal delivery services for health-conscious consumers.",
+    content: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
+    author: {
+      name: "Emma Roberts",
+      avatar: "https://randomuser.me/api/portraits/women/33.jpg"
+    },
+    date: "April 28, 2025",
+    readTime: "10 min read",
+    category: "Health & Wellness",
+    tags: ["healthy eating", "meal delivery", "nutrition"],
+    commentCount: 29,
+    featured: false
+  },
+  {
+    id: 5,
+    title: "The Future of Food Tech in Delivery",
+    excerpt: "Exploring emerging technologies reshaping the food delivery ecosystem.",
+    content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
+    image: "https://images.unsplash.com/photo-1593642633279-1796119d5482",
+    author: {
+      name: "David Park",
+      avatar: "https://randomuser.me/api/portraits/men/11.jpg"
+    },
+    date: "April 22, 2025",
+    readTime: "6 min read",
+    category: "Technology",
+    tags: ["foodtech", "innovation", "delivery"],
+    commentCount: 15,
+    featured: false
+  },
+  {
+    id: 6,
+    title: "Best Practices for Restaurant Owners Using Delivery Apps",
+    excerpt: "Essential strategies for restaurant owners to maximize their success with food delivery platforms.",
+    content: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.",
+    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+    author: {
+      name: "Lisa Thompson",
+      avatar: "https://randomuser.me/api/portraits/women/67.jpg"
+    },
+    date: "April 15, 2025",
+    readTime: "9 min read",
+    category: "Business",
+    tags: ["restaurant business", "delivery apps", "strategy"],
+    commentCount: 21,
+    featured: false
+  }
+];
+
 // Fetch blog posts from API
 const fetchBlogPosts = async (): Promise<BlogPost[]> => {
-  try {
-    // Replace with your actual API endpoint
-    const response = await fetch('https://api.example.com/blog');
-    
-    // For development purposes, if the API fails, return mock data
-    if (!response.ok) {
-      console.log('Using mock blog data');
-      return [
-        {
-          id: 1,
-          title: "10 Best Food Delivery Services in 2025",
-          excerpt: "Discover the top food delivery services that are revolutionizing the way we order food.",
-          content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-          image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38",
-          author: {
-            name: "Michael Johnson",
-            avatar: "https://randomuser.me/api/portraits/men/32.jpg"
-          },
-          date: "May 14, 2025",
-          readTime: "5 min read",
-          category: "Food Delivery",
-          tags: ["food delivery", "restaurants", "takeout"],
-          commentCount: 18,
-          featured: true
-        },
-        {
-          id: 2,
-          title: "How to Save Money on Food Delivery",
-          excerpt: "Learn the best tips and tricks to save money while still enjoying the convenience of food delivery.",
-          content: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-          image: "https://images.unsplash.com/photo-1532634993-15f421e42ec0",
-          author: {
-            name: "Sarah Wilson",
-            avatar: "https://randomuser.me/api/portraits/women/44.jpg"
-          },
-          date: "May 10, 2025",
-          readTime: "7 min read",
-          category: "Tips & Tricks",
-          tags: ["saving money", "food delivery", "tips"],
-          commentCount: 24,
-          featured: false
-        },
-        {
-          id: 3,
-          title: "The Rise of Ghost Kitchens in 2025",
-          excerpt: "Exploring how ghost kitchens are transforming the restaurant industry landscape.",
-          content: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-          image: "https://images.unsplash.com/photo-1540914124281-342587941389",
-          author: {
-            name: "Alex Chen",
-            avatar: "https://randomuser.me/api/portraits/men/22.jpg"
-          },
-          date: "May 5, 2025",
-          readTime: "8 min read",
-          category: "Industry Trends",
-          tags: ["ghost kitchens", "restaurants", "food industry"],
-          commentCount: 32,
-          featured: true
-        },
-        {
-          id: 4,
-          title: "Healthy Meal Delivery Services Review",
-          excerpt: "Comprehensive review of the top healthy meal delivery services for health-conscious consumers.",
-          content: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
-          author: {
-            name: "Emma Roberts",
-            avatar: "https://randomuser.me/api/portraits/women/33.jpg"
-          },
-          date: "April 28, 2025",
-          readTime: "10 min read",
-          category: "Health & Wellness",
-          tags: ["healthy eating", "meal delivery", "nutrition"],
-          commentCount: 29,
-          featured: false
-        },
-        {
-          id: 5,
-          title: "The Future of Food Tech in Delivery",
-          excerpt: "Exploring emerging technologies reshaping the food delivery ecosystem.",
-          content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-          image: "https://images.unsplash.com/photo-1593642633279-1796119d5482",
-          author: {
-            name: "David Park",
-            avatar: "https://randomuser.me/api/portraits/men/11.jpg"
-          },
-          date: "April 22, 2025",
-          readTime: "6 min read",
-          category: "Technology",
-          tags: ["foodtech", "innovation", "delivery"],
-          commentCount: 15,
-          featured: false
-        },
-        {
-          id: 6,
-          title: "Best Practices for Restaurant Owners Using Delivery Apps",
-          excerpt: "Essential strategies for restaurant owners to maximize their success with food delivery platforms.",
-          content: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.",
-          image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
-          author: {
-            name: "Lisa Thompson",
-            avatar: "https://randomuser.me/api/portraits/women/67.jpg"
-          },
-          date: "April 15, 2025",
-          readTime: "9 min read",
-          category: "Business",
-          tags: ["restaurant business", "delivery apps", "strategy"],
-          commentCount: 21,
-          featured: false
-        }
-      ];
-    }
-    
-    return await response.json();
-  } catch (error) {
-    console.error('Error fetching blog posts:', error);
-    throw new Error('Failed to fetch blog posts');
-  }
+  // For demo purposes, we'll always return mock data
+  console.log('Using mock blog data');
+  return mockBlogPosts;
 };
 
 const Blog = () => {
