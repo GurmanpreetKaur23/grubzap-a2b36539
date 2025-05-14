@@ -15,18 +15,18 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleMoodSelection = (mood) => {
+  const handleMoodSelection = (mood: string) => {
     let botResponse = '';
     if (mood === 'happy') {
       botResponse = 'You seem to be in a great mood! How about some sweet treats like a chocolate cake or a refreshing smoothie? 🍰🥤';
     } else if (mood === 'sad') {
-      botResponse = 'I'm sorry to hear that. Maybe a warm cup of coffee or a comforting bowl of pasta would help lift your spirits. ☕🍝';
+      botResponse = "I'm sorry to hear that. Maybe a warm cup of coffee or a comforting bowl of pasta would help lift your spirits. ☕🍝";
     } else if (mood === 'hungry') {
-      botResponse = 'Looks like you're craving food! How about a burger or some crispy fries to satisfy your hunger? 🍔🍟';
+      botResponse = "Looks like you're craving food! How about a burger or some crispy fries to satisfy your hunger? 🍔🍟";
     } else if (mood === 'tired') {
-      botResponse = 'Sounds like you need a boost! How about some coffee or a light sandwich? ☕🥪';
+      botResponse = "Sounds like you need a boost! How about some coffee or a light sandwich? ☕🥪";
     } else {
-      botResponse = 'I'm not sure about your mood, but how about a delicious wrap or a refreshing mocktail to start? 🌯🥤';
+      botResponse = "I'm not sure about your mood, but how about a delicious wrap or a refreshing mocktail to start? 🌯🥤";
     }
 
     const newMessages = [
